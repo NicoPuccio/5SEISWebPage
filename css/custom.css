@@ -1,0 +1,90 @@
+:root{
+    --red: #FF0000;
+    --dark: #333;
+    --light: #fff;
+    --buttonBg: #D74446;
+}
+
+body{
+    background-image: url(../img/BG_01.jpg);
+    /*object-fit: contain;*/
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    background-size: 100%;
+    background-position-x: 0%;
+    background-position-y: 35%;
+}
+
+button{
+    background-image: url("img/Boton Curvo02.png");
+    width: 300px;
+    height: 50px;
+    align-self: center;
+    background-color: var(--red);
+    color: var(--light);
+    border-radius: 15px;
+}
+
+@font-face {
+    font-family: "GothamBook";
+    src: url("E:/Repositorios/5SEIS Pagina Web/Fonts/GothamBook") format("woff");
+}
+
+h1{
+    color: var(--red);
+    font-family: "GothamBook";
+}
+
+h3{
+    color: var(--dark);
+    font-family: Arial, Helvetica, sans-serif
+}
+
+.wrapper{
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    grid-template-rows: 20% 80% 20%;
+    width: 100%;
+    height: 100%;
+}
+
+#content{
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    height: 300px;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-content: space-around;
+    margin-top: 20%;
+}
+
+#logo{
+    grid-column: 2/3;
+    grid-row: 1/2;
+    display : flex;
+    justify-content: center;
+    align-content: flex-end;
+    margin-top: 10%;
+}
+
+#buttons{
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 50% 50%;
+    grid-gap: 20px;
+    display: grid;
+    justify-content: center;
+    margin-top: 5%
+    
+}
+
+#start-button{
+    margin-left: 50%;
+    margin-top: 20%;
+}
+
+
