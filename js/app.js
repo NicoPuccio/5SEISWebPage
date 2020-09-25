@@ -1,8 +1,9 @@
 const btn = document.getElementById('start-button');
 const questionDiv = document.getElementById('question');
 const buttons = document.getElementById('buttons');
-var correctBtn = document.getElementById('correct');
-var incorrectBtn = document.getElementById('incorrect');
+const wrapper = document.querySelector(".wrapper");
+var flag = 0;
+
 
 loadEventListeners();
 function loadEventListeners(){
@@ -13,14 +14,147 @@ function startTrivia(e){
     e.preventDefault();
 
     questionDiv.innerHTML = `
-    <h1> ¿QUE PORCENTAJE DE VITAMINA C CONTIENEN LAS AMPOLLAS PEPTIDE-C?"</h1>
+    <h1> ¿QUE PORCENTAJE DE VITAMINA C CONTIENEN LAS AMPOLLAS PEPTIDE-C?</h1>
     `;
-    buttons.innerHTML = ` 
-    <button id="option incorrect">8%</button>
-    <button id="option correct">10%</button>
-    <button id="option incorrect">5%</button>
-    <button id="option incorrect">2.5%</button>
-    `;
+    addOptions();
     var body = document.getElementById('body');
     body.style.backgroundImage = "url('img/BG_02.jpg')";
+}
+
+function addOptions(){
+    buttons.innerHTML = "";
+    var button = document.createElement("button");
+    createButton(button, "8%", "incorrect");
+    var button2 = document.createElement("button");
+    createButton(button2, "10%", "correct");
+    var button3 = document.createElement("button");
+    createButton(button3, "5%", "incorrect");
+    var button4 = document.createElement("button");
+    createButton(button4, "2.5%", "incorrect");
+}
+
+function trueOrFalse(){
+    body.style.backgroundImage = "url('img/BG_03.jpg')";
+    //La vitamina C Mancha?
+    questionDiv.innerHTML = `
+    <h1>¿LA VITAMINA C <br> MANCHA?</h1>
+    `;
+    buttons.innerHTML = "";
+    enableButtons();
+    var buttonFalse = document.createElement("button");
+    createButton(buttonFalse, "Verdadero", "incorrect");
+    var buttonTrue = document.createElement("button");
+    createButton(buttonTrue, "Falso", "correct");
+}
+
+function trueOrFalse2(){
+    enableButtons();
+    //Las ampollas peptide-C se usan solo de dia
+    questionDiv.innerHTML = `
+    <h1>LAS AMPOLLAS PEPTIDE-C SE USAN SOLO DE DIA</h1>
+    `;
+    buttons.innerHTML = "";
+    var buttonFalse = document.createElement("button");
+    createButton(buttonFalse, "Verdadero", "incorrect");
+    var buttonTrue = document.createElement("button");
+    createButton(buttonTrue, "Falso", "correct");
+}
+
+function fillData(){
+    body.style.backgroundImage = "url('img/BG_01.jpg')";
+    createForm();
+}
+
+function createForm(){
+    wrapper.innerHTML = `<div id = "logo">
+        <img src = "img/VichyLogo.png" alt = "Logo">
+        </div>
+        <div id= "content">
+            <div id=question>
+                <h1> BIENVENIDOS A LA TRIVIA DE AMPOLLAS VICHY</h1>
+                <h4> Completa acá tus datos para que puedas </br>
+                recibir la ampolla gratis en tu casa</h4>
+            </div>
+            <form>
+            <input type ="text" name="nombre" placeholder="Nombre y Apellido">
+            <input type ="text" name="direccion" placeholder="Dir: (ej: Av. Libertador 5235, piso6, depto, A)">
+            <input type ="text" name="Localidad" placeholder="Localidad">
+            <input type ="text" name="CP" placeholder="Código postal">
+            Acepto bases y condiciones<input type ="radio" name="ByC" value="Acepto bases y condiciones">
+            <button name"submit">Continuar</button>
+            </form>
+        </div>
+    `;
+    
+}
+
+function showCorrect(e){
+    e.preventDefault();
+    flag++;
+    const correct = document.createElement('div');
+    correct.id = "answer";
+    correct.innerHTML = `
+        <img src = "img/CORRECTO.png" alt = "Correcto">
+    `;
+    wrapper.appendChild(correct);
+    disableButtons();
+    setTimeout(() => clearCorrectIncorrect(), 1000);
+    switch (flag){
+        case 1:
+            setTimeout(() => { trueOrFalse()}, 1000);
+            break;
+        case 2:
+            setTimeout(() => { trueOrFalse2()}, 1000);
+            break;
+        case 3:
+            setTimeout(() => {fillData()}, 1000);
+            break;
+    }
+}
+
+function showIncorrect(e){
+    e.preventDefault();
+    flag++;
+    const incorrect = document.createElement('div');
+    incorrect.id = "answer";
+    incorrect.innerHTML = ` <img src = "img/INCORRECTO.png"> `
+    wrapper.appendChild(incorrect);
+    disableButtons();
+    setTimeout(() => clearCorrectIncorrect(), 1000);
+    switch (flag){
+        case 1:
+            setTimeout(() => { trueOrFalse()}, 1000);
+            break;
+        case 2:
+            setTimeout(() => { trueOrFalse2()}, 1000);
+            break;
+        case 3:
+            setTimeout(() => {fillData()}, 1000);
+            break;
+    }
+}
+function clearCorrectIncorrect()
+{
+    var div = document.getElementById("answer");
+    div.remove();
+}
+
+function createButton(btn, text, id){
+    btn.innerText = text;
+    btn.id = id;
+    buttons.appendChild(btn);
+    if(btn.id === "correct"){
+        btn.addEventListener('click', showCorrect);
+    }
+    else if(btn.id === "incorrect"){
+        btn.addEventListener('click', showIncorrect);
+    }
+}
+
+function disableButtons(){
+    buttons.className = "disabled";
+}
+
+function enableButtons(){
+    buttons.className = "";
 }

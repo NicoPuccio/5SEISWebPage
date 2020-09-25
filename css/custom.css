@@ -18,7 +18,7 @@ body{
 
 button{
     background-image: url("img/Boton Curvo02.png");
-    width: 300px;
+    width: 250px;
     height: 50px;
     align-self: center;
     background-color: var(--red);
@@ -26,9 +26,9 @@ button{
     border-radius: 15px;
 }
 
-@font-face {
-    font-family: "GothamBook";
-    src: url("E:/Repositorios/5SEIS Pagina Web/Fonts/GothamBook") format("woff");
+.disabled {
+    pointer-events: none;
+    opacity:0.4;
 }
 
 h1{
@@ -60,7 +60,7 @@ h3{
     display: flex;
     flex-direction: column;
     align-content: space-around;
-    margin-top: 20%;
+    margin-top: 10%;
 }
 
 #logo{
@@ -85,6 +85,17 @@ h3{
 #start-button{
     margin-left: 50%;
     margin-top: 20%;
+}
+
+#answer{
+    grid-column-start: 2;
+    grid-row-start: 3;
+    grid-column-end: 3;
+    grid-row-end: 4;
+    display:flex;
+    justify-content: center;
+    margin-top: 25%;
+
 }
 
 
