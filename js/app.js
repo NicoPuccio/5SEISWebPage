@@ -61,38 +61,21 @@ function trueOrFalse2(){
 }
 
 function fillData(){
+    questionDiv.innerHTML = "";
+    buttons.innerHTML = "";
     body.style.backgroundImage = "url('img/BG_01.jpg')";
     createForm();
 }
 
 function createForm(){
-    wrapper.innerHTML = `<div id = "logo">
-        <img src = "img/VichyLogo.png" alt = "Logo">
-        </div>
-        <div id= "content">
-            <div id=question>
-                <h1> BIENVENIDOS A LA TRIVIA DE AMPOLLAS VICHY</h1>
-                <h4> Completa acá tus datos para que puedas </br>
-                recibir la ampolla gratis en tu casa</h4>
-            </div>
-            <form>
-            <input type ="text" name="nombre" placeholder="Nombre y Apellido">
-            <input type ="text" name="direccion" placeholder="Dir: (ej: Av. Libertador 5235, piso6, depto, A)">
-            <input type ="text" name="Localidad" placeholder="Localidad">
-            <input type ="text" name="CP" placeholder="Código postal">
-            Acepto bases y condiciones<input type ="radio" name="ByC" value="Acepto bases y condiciones">
-            <button name"submit">Continuar</button>
-            </form>
-        </div>
-    `;
-    
+    var form = document.getElementById('form');
+    form.style.display = "grid";
 }
 
 function showCorrect(e){
     e.preventDefault();
     flag++;
-    const correct = document.createElement('div');
-    correct.id = "answer";
+    const correct = document.getElementById('answer');
     correct.innerHTML = `
         <img src = "img/CORRECTO.png" alt = "Correcto">
     `;
@@ -115,9 +98,10 @@ function showCorrect(e){
 function showIncorrect(e){
     e.preventDefault();
     flag++;
-    const incorrect = document.createElement('div');
-    incorrect.id = "answer";
-    incorrect.innerHTML = ` <img src = "img/INCORRECTO.png"> `
+    const incorrect = document.getElementById('answer');
+    incorrect.innerHTML = ` 
+    <img src = "img/INCORRECTO.png"> 
+    `;
     wrapper.appendChild(incorrect);
     disableButtons();
     setTimeout(() => clearCorrectIncorrect(), 1000);
@@ -136,7 +120,7 @@ function showIncorrect(e){
 function clearCorrectIncorrect()
 {
     var div = document.getElementById("answer");
-    div.remove();
+    div.innerHTML = ``;
 }
 
 function createButton(btn, text, id){
