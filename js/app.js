@@ -14,7 +14,7 @@ var radio = document.getElementById('checked');
 loadEventListeners();
 function loadEventListeners(){
     btn.addEventListener('click', startTrivia);
-    
+    continueBtn.addEventListener('click', onFilledData);
 }
 
 function startTrivia(e){
@@ -81,6 +81,13 @@ function createForm(){
         validateData();
     }, 500); 
     
+}
+
+function onFilledData(){
+    var form = document.getElementById('form');
+    form.style.display = "none";
+    var div = document.getElementById("filledData");
+    div.style.display = "grid";
 }
 
 function validateData(){

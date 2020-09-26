@@ -23,19 +23,34 @@
         <div id="answer">
         </div>
         <form id="form">
-            <h2 style="grid-column: 1/3">Completa acá tus datos para que puedas recibir 
+            <div id="totalScore">
+                <img class="data" src = "img/Star.png" alt = "estrella" id = "star">
+                <h3 class="data" id="you-did">HICISTE</h3>
+                <h1 class="data" id="points"> 120 </h1> 
+                <h2 class="data" id="pts">pts.</h2>
+            </div>
+            <h2 id= "instructions">Completa acá tus datos para que puedas recibir 
                     la ampolla gratis en tu casa
             </h2>
             <input id="name" type ="text" name="nombre" placeholder="Nombre y Apellido">
             <input id="adress" type ="text" name="direccion" placeholder="Dir: (ej: Av. Libertador 5235, piso6, depto, A)">
             <input id="county" type ="text" name="Localidad" placeholder="Localidad">
-            <input id="postCode" type ="text" name="CP" placeholder="Código postal">
-            <button id="continue" type="reset">Continuar</button>
+            <input id="postCode" type ="number" name="CP" placeholder="Código postal">
+            <button id="continue" type = "button">Continuar</button>
             <div id = radio>
                 <label for="radio">Acepto bases y condiciones</label>
                 <input id="checked" type ="radio" name="ByC" value="Acepto bases y condiciones">
             </div>
         </form>
+        <div id="filledData">
+            <h1 id="thank-you">¡GRACIAS POR </br> COMPLETAR TUS </br> DATOS!</h1>
+            <h3 id="remember">Recordá que si subis tu producto 
+                de anti Edad de <b>Vichy</b> favorito con #AntiedadVichy tendrás
+                chances de recibir una ampolla
+                Glyco-C
+            </h3>
+            <button id="continue2" onclick="document.location.reload()">Continuar</button>
+        </div>
     </div>
     <script src = "js/app.js"></script>
 </body>
