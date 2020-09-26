@@ -70,7 +70,7 @@ function trueOrFalse2(){
 function fillData(){
     questionDiv.innerHTML = "";
     buttons.innerHTML = "";
-    body.style.backgroundImage = "url('img/BG_01.jpg')";
+    body.style.backgroundImage = "url('img/BG_02.jpg')";
     createForm();
 }
 
