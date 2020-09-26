@@ -4,15 +4,22 @@ const buttons = document.getElementById('buttons');
 const wrapper = document.querySelector(".wrapper");
 var flag = 0;
 
+var nameInput = document.getElementById('name');
+var adress = document.getElementById('adress');
+var county = document.getElementById('county');
+var postCode = document.getElementById('postCode');
+var continueBtn = document.getElementById('continue');
+var radio = document.getElementById('checked');
 
 loadEventListeners();
 function loadEventListeners(){
     btn.addEventListener('click', startTrivia);
+    
 }
 
 function startTrivia(e){
     e.preventDefault();
-
+    buttons.style.display = "grid";
     questionDiv.innerHTML = `
     <h1> ¿QUE PORCENTAJE DE VITAMINA C CONTIENEN LAS AMPOLLAS PEPTIDE-C?</h1>
     `;
@@ -70,6 +77,19 @@ function fillData(){
 function createForm(){
     var form = document.getElementById('form');
     form.style.display = "grid";
+    setInterval(() => {
+        validateData();
+    }, 500); 
+    
+}
+
+function validateData(){
+    if(nameInput.value !== '' && adress.value !== '' && county.value !== '' &&
+         postCode.value !== '' && radio.checked == true)
+        {
+            continueBtn.className = "";
+        }else 
+            continueBtn.className = "disabled";
 }
 
 function showCorrect(e){
