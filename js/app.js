@@ -3,6 +3,7 @@ const questionDiv = document.getElementById('question');
 const buttons = document.getElementById('buttons');
 const wrapper = document.querySelector(".wrapper");
 var flag = 0;
+var points = 0;
 
 var nameInput = document.getElementById('name');
 var adress = document.getElementById('adress');
@@ -70,13 +71,14 @@ function trueOrFalse2(){
 function fillData(){
     questionDiv.innerHTML = "";
     buttons.innerHTML = "";
-    body.style.backgroundImage = "url('img/BG_02.jpg')";
+    body.style.backgroundImage = "url('img/BG_01.jpg')";
     createForm();
 }
 
 function createForm(){
     var form = document.getElementById('form');
     form.style.display = "grid";
+    form.firstElementChild.childNodes[5].innerText = points; //points change according to correct answers
     setInterval(() => {
         validateData();
     }, 500); 
@@ -102,6 +104,7 @@ function validateData(){
 function showCorrect(e){
     e.preventDefault();
     flag++;
+    points+=40;
     const correct = document.getElementById('answer');
     correct.innerHTML = `
         <img src = "img/CORRECTO.png" alt = "Correcto">
